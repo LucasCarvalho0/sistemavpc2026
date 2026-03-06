@@ -62,7 +62,7 @@ export default function App() {
       }
     }
     loadData()
-  }, [setEmployees, setProductions])
+  }, [setEmployees, setProductions, setQuarterRanking, setQuarterEvolution])
 
   const pages: Record<string, React.ReactElement> = {
     dashboard: <Dashboard />,
