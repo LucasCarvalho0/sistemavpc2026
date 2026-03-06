@@ -1,0 +1,44 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum VersaoCarro {
+  L3_Exclusive @map("L3 (Exclusive)")
+  L2_Advanced  @map("L2 (Advanced)")
+}
+
+model Funcionario {
+  id        Int      @id @default(autoincrement())
+  nome      String   @db.VarChar(100)
+  ativo     Boolean  @default(true)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  producoes Producao[]
+
+  @@map("funcionarios")
+}
+
+model Producao {
+  id            Int      @id @default(autoincrement())
+  vin           String   @db.VarChar(17)
+  versaoCarro   String   @map("versao_carro") @db.VarChar(20)
+  funcionarioId Int      @map("funcionario_id")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  funcionario Funcionario @relation(fields: [funcionarioId], references: [id])
+
+  @@unique([vin, createdAt])
+  @@index([funcionarioId])
+  @@index([createdAt])
+  @@index([vin])
+  @@map("producoes")
+}

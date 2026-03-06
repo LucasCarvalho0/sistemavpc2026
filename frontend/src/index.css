@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { @apply bg-background; }
+  ::-webkit-scrollbar-thumb { @apply bg-primary rounded; }
+
+  select option { @apply bg-surface-2 text-foreground; }
+}
+
+@layer components {
+  .card {
+    @apply bg-surface border border-border rounded-xl;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-br from-primary to-primary-dark text-white font-semibold
+           rounded-xl transition-all duration-150 cursor-pointer
+           hover:from-primary-hover hover:to-primary hover:-translate-y-px
+           hover:shadow-[0_4px_20px_rgba(249,115,22,0.4)]
+           active:translate-y-0 disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-surface-2 border border-border-2 text-subtle
+           rounded-xl transition-all duration-150 cursor-pointer
+           hover:border-primary hover:text-primary;
+  }
+
+  .input-field {
+    @apply bg-surface-2 border border-border-2 text-foreground rounded-xl
+           outline-none transition-all duration-150
+           focus:border-primary focus:shadow-[0_0_0_3px_rgba(249,115,22,0.12)]
+           placeholder:text-muted;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 w-full px-5 py-3.5 text-sm font-medium
+           text-subtle border-l-[3px] border-transparent
+           transition-all duration-150 cursor-pointer
+           hover:bg-primary/10 hover:text-primary;
+  }
+
+  .nav-item.active {
+    @apply bg-primary/20 text-primary border-l-primary;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium;
+  }
+
+  @keyframes scanLaser {
+  0% { top: 20%; opacity: 0.8; }
+  50% { top: 80%; opacity: 1; }
+  100% { top: 20%; opacity: 0.8; }
+}
+
+  .badge-orange {
+    @apply badge bg-primary/15 text-primary;
+  }
+
+  .badge-blue {
+    @apply badge bg-blue-400/15 text-blue-400;
+  }
+
+  .badge-green {
+    @apply badge bg-green-500/15 text-green-400;
+  }
+
+  .badge-red {
+    @apply badge bg-red-500/15 text-red-400;
+  }
+}
