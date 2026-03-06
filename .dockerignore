@@ -1,0 +1,31 @@
+# Dependencies
+node_modules
+/backend/node_modules
+/frontend/node_modules
+
+# Build artifacts
+dist
+/backend/dist
+/frontend/dist
+.vite
+/frontend/.vite
+
+# Environment variables
+.env
+.env.*
+!.env.example
+/backend/.env
+/frontend/.env
+
+# IDEs and Tools
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+*.log
+backend/server_log.txt
+
+# PWA icons generated during dev
+/frontend/public/pwa-*.png
+/frontend/public/apple-touch-icon.png
+/frontend/public/favicon.png
